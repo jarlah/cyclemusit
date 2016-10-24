@@ -1,10 +1,10 @@
-import {div, h1} from '@cycle/dom'
+import {div} from '@cycle/dom'
 import xs from 'xstream'
 
-export default function App (sources) {
+export default function () {
   const vtree$ = xs.of(
     div(
-      'Welcome'
+      "Hei"
     )
   )
   const sinks = {

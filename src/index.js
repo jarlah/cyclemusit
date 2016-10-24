@@ -13,29 +13,30 @@ import BrowseNode from './pages/BrowseNode'
 import BrowseRoot from './pages/BrowseRoot'
 import BrowseEvents from './pages/BrowseEvents'
 import Home from './pages/Home'
+import Layout from './layout'
 
 function main(sources) {
   const match$ = sources.router.define({
     '/':
-      Home,
+      Layout(Home),
     '/magasin':
-      BrowseRoot,
+      Layout(BrowseRoot),
     '/magasin/:nodeId': nodeId => sources =>
-      BrowseNode(Object.assign(sources, { Props: { nodeId } })),
+      Layout(BrowseNode)(Object.assign(sources, { Props: { nodeId } })),
     '/magasin/:nodeId/edit': nodeId => sources =>
-      EditNode(Object.assign(sources, { Props: { nodeId } })),
+      Layout(EditNode)(Object.assign(sources, { Props: { nodeId } })),
     '/magasin/:nodeId/add': nodeId => sources =>
-      AddNode(Object.assign(sources, { Props: { nodeId } })),
+      Layout(AddNode)(Object.assign(sources, { Props: { nodeId } })),
     '/magasin/:nodeId/events': nodeId => sources =>
-      BrowseEvents(Object.assign(sources, { Props: { nodeId } })),
+      Layout(BrowseEvents)(Object.assign(sources, { Props: { nodeId } })),
     '/magasin/:nodeId/events/control/:controlId': (nodeId, controlId) => sources =>
-      ViewControl(Object.assign(sources, { Props: { nodeId, controlId } })),
+      Layout(ViewControl)(Object.assign(sources, { Props: { nodeId, controlId } })),
     '/magasin/:nodeId/events/control/add': nodeId => sources =>
-      AddControl(Object.assign(sources, { Props: { nodeId } })),
+      Layout(AddControl)(Object.assign(sources, { Props: { nodeId } })),
     '/magasin/:nodeId/events/observation/:observationId': (nodeId, observationId) => sources =>
-      ViewObservation(Object.assign(sources, { Props: { nodeId, observationId } })),
+      Layout(ViewObservation)(Object.assign(sources, { Props: { nodeId, observationId } })),
     '/magasin/:nodeId/events/observation/add': nodeId => sources =>
-      AddObservation(Object.assign(sources, { Props: { nodeId } }))
+      Layout(AddObservation)(Object.assign(sources, { Props: { nodeId } }))
   });
 
   const page$ = match$.map(({path, value}) => {
