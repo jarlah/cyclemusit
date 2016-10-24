@@ -5,14 +5,15 @@ export default function Layout (Component) {
     const component = Component(sources)
     const vtree$ = component.DOM.map(childDom =>
       div([
-        h1('Header'),
+        div('Header'),
         childDom,
         div('Footer')
       ])
     )
     const sinks = {
       DOM: vtree$,
-      router: component.router
+      router: component.router,
+      HTTP: component.HTTP
     }
     return sinks;
   }

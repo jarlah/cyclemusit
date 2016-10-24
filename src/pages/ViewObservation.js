@@ -7,7 +7,8 @@ export default function App (sources) {
   )
   const sinks = {
     DOM: vtree$,
-    router: xs.empty()
+    router: xs.empty(),
+    HTTP: xs.empty()
   }
   return sinks
 }

@@ -1,5 +1,6 @@
 import Cycle from '@cycle/xstream-run';
 import {makeDOMDriver} from '@cycle/dom';
+import {makeHTTPDriver} from '@cycle/http'
 import {makeRouterDriver} from 'cyclic-router';
 import {createHashHistory} from 'history';
 import switchPath from 'switch-path';
@@ -48,10 +49,12 @@ function main(sources) {
   return {
     DOM: page$.map(c => c.DOM).flatten(),
     router: page$.map(c => c.router).flatten(),
+    HTTP: page$.map(c => c.HTTP).flatten(),
   };
 }
 
 Cycle.run(main, {
   DOM: makeDOMDriver('#app'),
-  router: makeRouterDriver(createHashHistory(), switchPath)
+  router: makeRouterDriver(createHashHistory(), switchPath),
+  HTTP: makeHTTPDriver()
 });

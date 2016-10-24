@@ -7,10 +7,12 @@
   },
   "dependencies": {
     "@cycle/dom": "^13.0.0",
+    "@cycle/http": "^11.1.0",
     "@cycle/isolate": "^1.4.0",
     "@cycle/xstream-run": "^3.1.0",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "cyclic-router": "^3.0.1",
+    "immutable": "^3.8.1",
     "snabbdom-jsx": "^0.3.1",
     "switch-path": "^1.1.8",
     "xstream": "^6.6.0"
